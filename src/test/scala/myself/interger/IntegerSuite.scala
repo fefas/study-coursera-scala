@@ -119,4 +119,153 @@ class IntegerSuite extends FunSuite {
       assert(minusFour - minusSeven == three)
     }
   }
+
+  test("no number is smaller than it self") {
+    new SomeNumbers {
+      assert(!(zero < zero))
+      assert(!(five < five))
+      assert(!(minusTwo < minusTwo))
+    }
+  }
+
+  test("zero is smaller than any positive number") {
+    new SomeNumbers {
+      assert(zero < one)
+      assert(zero < two)
+      assert(zero < five)
+    }
+  }
+
+  test("zero is not smaller than any negative number") {
+    new SomeNumbers {
+      assert(!(zero < minusOne))
+      assert(!(zero < minusTwo))
+      assert(!(zero < minusFive))
+    }
+  }
+
+  test("positive numbers aren't smaller than any not positive number") {
+    new SomeNumbers {
+      assert(!(two < zero))
+      assert(!(three < minusTwo))
+      assert(!(one < minusFive))
+    }
+  }
+
+  test("a positive number is smaller than another positive number if it is closer to zero") {
+    new SomeNumbers {
+      assert(two < three)
+      assert(two < four)
+      assert(four < five)
+      assert(!(four < two))
+      assert(!(eight < one))
+    }
+  }
+
+  test("negative numbers are always smaller than any not negative number") {
+    new SomeNumbers {
+      assert(minusTwo < zero)
+      assert(minusThree < two)
+      assert(minusOne < five)
+    }
+  }
+
+  test("a negative number is not smaller than any another negative number if it is closer to zero") {
+    new SomeNumbers {
+      assert(!(minusTwo < minusFour))
+      assert(minusFive < minusOne)
+    }
+  }
+
+  test("zero is smaller or equal to zero") {
+    new SomeNumbers {
+      assert(zero <= zero)
+    }
+  }
+
+  test("zero is smaller or equal to positive numbers") {
+    new SomeNumbers {
+      assert(zero <= one)
+      assert(zero <= six)
+    }
+  }
+
+  test("zero is not smaller or equal to negative numbers") {
+    new SomeNumbers {
+      assert(!(zero <= minusOne))
+      assert(!(zero <= minusSix))
+    }
+  }
+
+  test("positive numbers and 'smaller or equal to' operator") {
+    new SomeNumbers {
+      assert(one <= one)
+      assert(one <= five)
+      assert(!(five <= one))
+      assert(!(two <= zero))
+      assert(!(two <= minusTen))
+    }
+  }
+
+  test("negative numbers and 'smaller or equal to' operator") {
+    new SomeNumbers {
+      assert(minusTwo <= minusTwo)
+      assert(minusTwo <= minusOne)
+      assert(!(minusTwo <= minusThree))
+      assert(minusTwo <= zero)
+      assert(minusTwo <= ten)
+    }
+  }
+
+  test("zero and 'greater' operator") {
+    new SomeNumbers {
+      assert(!(zero > zero))
+      assert(!(zero > one))
+      assert(zero > minusOne)
+    }
+  }
+
+  test("positive numbers and 'greater' operator") {
+    new SomeNumbers {
+      assert(one > zero)
+      assert(!(one > one))
+      assert(!(one > five))
+      assert(one > minusFive)
+    }
+  }
+
+  test("negative numbers and 'greater' operator") {
+    new SomeNumbers {
+      assert(!(minusOne > zero))
+      assert(!(minusOne > minusOne))
+      assert(!(minusOne > five))
+      assert(minusOne > minusFive)
+    }
+  }
+
+  test("zero and 'greater or equal' operator") {
+    new SomeNumbers {
+      assert(zero >= zero)
+      assert(!(zero >= one))
+      assert(zero >= minusOne)
+    }
+  }
+
+  test("positive numbers and 'greater or equal' operator") {
+    new SomeNumbers {
+      assert(one >= zero)
+      assert(one >= one)
+      assert(!(one >= five))
+      assert(one >= minusFive)
+    }
+  }
+
+  test("negative numbers and 'greater or equal' operator") {
+    new SomeNumbers {
+      assert(!(minusOne >= zero))
+      assert(minusOne >= minusOne)
+      assert(!(minusOne >= five))
+      assert(minusOne >= minusFive)
+    }
+  }
 }

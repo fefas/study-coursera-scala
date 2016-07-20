@@ -11,4 +11,8 @@ abstract class Int {
   }
   def +(that: Int): Int
   def -(that: Int): Int
+  def <(that: Int): Boolean
+  def <=(that: Int): Boolean = if (this == that) true else this < that
+  def >(that: Int): Boolean = !(this <= that)
+  def >=(that: Int): Boolean = !(this < that)
 }
