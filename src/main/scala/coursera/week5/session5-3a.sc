@@ -26,7 +26,7 @@ msort(nums)((a: Int, b: Int) => a > b)
 msort(nums)((a: Int, b: Int) => abs(a) < abs(b))
 msort(nums)((a: Int, b: Int) => if (abs(a) == abs(b)) a < b else abs(a) < abs(b))
 
-msort(nums)((a: Int, b: Int) => if (a % 2 == b % 2) a < b else if (a % 2 == 0) false else true)
+msort(nums)((a: Int, b: Int) => if ((a - b) % 2 == 0) a < b else a % 2 != 0)
 
 val fruits = List("apple", "pineapple", "orange", "banana")
 msort(fruits)((a: String, b: String) => a.compareTo(b) < 0)
